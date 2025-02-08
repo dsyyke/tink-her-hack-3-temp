@@ -25,15 +25,15 @@ ONE -EVENT solves this by providing a centralized platform where all campus even
 ## Technical Details
 ### Technologies/Components Used
 For Software:
-- [Languages used]
-- [Frameworks used]
-- [Libraries used]
-- [Tools used]
+- [Languages used]-HTML,PYTHON
+- [Frameworks used]-FLASK
+- [Libraries used]-
+- [Tools used]-
 
 For Hardware:
-- [List main components]
-- [List specifications]
-- [List tools required]
+- [List main components]-
+- [List specifications]-
+- [List tools required]-
 
 ### Implementation
 For Software:
@@ -91,9 +91,9 @@ For Hardware:
 [Add any extra demo materials/links]
 
 ## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
+- [Devika AD]: [Specific contributions]
+- [Dhiya Baby E]: [Specific contributions]
+- [Sruthy Babu]: [Specific contributions]
 
 ---
 Made with ❤️ at TinkerHub
