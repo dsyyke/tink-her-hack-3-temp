@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                        url('https://i.pinimg.com/736x/3b/3b/1b/3b3b1b5894f3d1e8ff10826c847fff86.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .register-container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            width: 100%;
+            max-width: 400px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .register-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .register-header h1 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .register-header p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: white;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-group input:focus {
+            border-color: rgba(52, 152, 219, 0.8);
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .register-btn {
+            width: 100%;
+            padding: 12px;
+            background: rgba(46, 204, 113, 0.8);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .register-btn:hover {
+            background: rgba(46, 204, 113, 1);
+            transform: translateY(-2px);
+        }
+
+        .error-message {
+            color: #ff6b6b;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .success-message {
+            color: #2ecc71;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .success-message a {
+            color: #74b9ff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .success-message a:hover {
+            color: #0984e3;
+            text-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+        }
+
+        /* Add back button */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-2px);
+        }
+    </style>
+</head>
+<body>
+    <a href="login.html" class="back-button">← Back to Login</a>
+    
+    <div class="register-container">
+        <div class="register-header">
+            <h1>Registration</h1>
+            <p>Create your account</p>
+        </div>
+
+        <form id="registerForm" onsubmit="handleRegistration(event)">
+            <div class="form-group">
+                <label>Admission Number</label>
+                <input type="text" id="admissionNumber" required>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="password" required>
+            </div>
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" id="confirmPassword" required>
+            </div>
+            <button type="submit" class="register-btn">Register</button>
+        </form>
+
+        <p id="errorMessage" class="error-message">Registration failed. Please try again.</p>
+        <p id="successMessage" class="success-message">Registration successful! You can now <a href="login.html">login</a>.</p>
+    </div>
+
+    <script>
+        function handleRegistration(event) {
+            event.preventDefault();
+
+            const admissionNumber = document.getElementById('admissionNumber').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
+
+            // Basic validation
+            if (!admissionNumber || !password || !confirmPassword) {
+                errorMessage.textContent = "Please fill in all fields.";
+                errorMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                errorMessage.textContent = "Passwords do not match.";
+                errorMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+                return;
+            }
+
+            // Simulating a successful registration
+            successMessage.style.display = 'block';
+            errorMessage.style.display = 'none';
+
+            // Clear the form fields
+            document.getElementById('registerForm').reset();
+        }
+    </script>
+</body>
+</html>

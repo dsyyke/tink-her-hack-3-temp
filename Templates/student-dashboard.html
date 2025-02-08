@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Event Management</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .navbar {
+            background-color: #2c3e50;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .navbar-title {
+            font-size: 1.5em;
+        }
+
+        .welcome-text {
+            color: #bdc3c7;
+            font-size: 0.9em;
+        }
+
+        .logout-btn {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .logout-btn:hover {
+            background-color: #c0392b;
+        }
+
+        .dashboard-container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .search-section {
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .event-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .event-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .event-header {
+            background-color: #34495e;
+            color: white;
+            padding: 15px;
+            position: relative;
+        }
+
+        .event-title {
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+
+        .event-subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .event-content {
+            padding: 20px;
+        }
+
+        .event-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .info-icon {
+            width: 20px;
+            margin-right: 10px;
+        }
+
+        .event-description {
+            color: #666;
+            margin: 15px 0;
+            line-height: 1.5;
+        }
+
+        .register-btn {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .register-btn:hover {
+            background-color: #27ae60;
+        }
+
+        .registered {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+
+        .registered:hover {
+            background-color: #95a5a6;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            margin: 50px auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        .registration-details {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .event-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div>
+            <div class="navbar-title">Student Dashboard</div>
+            <div class="welcome-text">Welcome, John Doe</div>
+        </div>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </nav>
+
+    <!-- Main Dashboard -->
+    <div class="dashboard-container">
+        <!-- Search Section -->
+        <div class="search-section">
+            <input type="text" class="search-input" placeholder="Search events...">
+        </div>
+
+        <!-- Events Container -->
+        <div class="event-container">
+            <!-- Event Card 1 -->
+            <div class="event-card">
+                <div class="event-header">
+                    <h2 class="event-title">Tinker Hub</h2>
+                    <div class="event-subtitle">Talk Session by Moosa Mehr</div>
+                </div>
+                <div class="event-content">
+                    <img src="/api/placeholder/400/200" alt="Event poster" class="event-image">
+                    <div class="info-item">
+                        <span class="info-icon">🕒</span>
+                        <span>9:30 - 3:30</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📍</span>
+                        <span>Seminar Hall</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📅</span>
+                        <span>15th February 2025</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">👥</span>
+                        <span>Tech Club</span>
+                    </div>
+                    <div class="event-description">
+                        Join us for an inspiring talk session on innovation and technology by industry expert Moosa Mehr.
+                    </div>
+                    <div class="form-group">
+                        <label for="registrationLink">Registration Form Link</label>
+                        <input type="url" id="registrationLink" placeholder="https://forms.google.com/..." required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Card 2 -->
+            <div class="event-card">
+                <div class="event-header">
+                    <h2 class="event-title">Code Craft</h2>
+                    <div class="event-subtitle">Web Development Workshop</div>
+                </div>
+                <div class="event-content">
+                    <img src="/api/placeholder/400/200" alt="Event poster" class="event-image">
+                    <div class="info-item">
+                        <span class="info-icon">🕒</span>
+                        <span>10:00 - 4:00</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📍</span>
+                        <span>Computer Lab</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📅</span>
+                        <span>20th February 2025</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">👥</span>
+                        <span>Programming Club</span>
+                    </div>
+                    <div class="event-description">
+                        Hands-on workshop covering modern web development technologies and best practices.
+                    </div>
+                    <div class="form-group">
+                        <label for="registrationLink">Registration Form Link</label>
+                        <input type="url" id="registrationLink" placeholder="https://forms.google.com/..." required>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Registration Modal -->
+    <div id="registrationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Event Registration</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="registration-details">
+                <h3>Event: <span id="modalEventTitle">Tinker Hub</span></h3>
+                <p>Please confirm your registration for this event. You will receive a confirmation email with further details.</p>
+            </div>
+            <button class="register-btn" onclick="confirmRegistration()">Confirm Registration</button>
+        </div>
+    </div>
+
+    <script>
+        function showRegistrationModal(eventId) {
+            document.getElementById('registrationModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('registrationModal').style.display = 'none';
+        }
+
+        function confirmRegistration() {
+            alert('Registration successful! You will receive a confirmation email shortly.');
+            closeModal();
+            // Update button to show registered status
+            event.target.closest('.event-card').querySelector('.register-btn').textContent = 'Already Registered';
+            event.target.closest('.event-card').querySelector('.register-btn').classList.add('registered');
+            event.target.closest('.event-card').querySelector('.register-btn').disabled = true;
+        }
+
+        function logout() {
+            if(confirm('Are you sure you want to logout?')) {
+                window.location.href = 'login.html';
+            }
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('registrationModal')) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                        url('https://i.pinimg.com/736x/3b/3b/1b/3b3b1b5894f3d1e8ff10826c847fff86.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            width: 100%;
+            max-width: 400px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-header h1 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .login-header p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .login-type-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .type-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .type-btn.active {
+            background: rgba(52, 152, 219, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .type-btn:hover {
+            background: rgba(52, 152, 219, 0.4);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: white;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-group input:focus {
+            border-color: rgba(52, 152, 219, 0.8);
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: rgba(46, 204, 113, 0.8);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .login-btn:hover {
+            background: rgba(46, 204, 113, 1);
+            transform: translateY(-2px);
+        }
+
+        .error-message {
+            color: #ff6b6b;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .register-link p {
+            color: white;
+        }
+
+        .register-link a {
+            color: #74b9ff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .register-link a:hover {
+            color: #0984e3;
+            text-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>Welcome Back</h1>
+            <p>Please login to continue</p>
+        </div>
+
+        <div class="login-type-selector">
+            <button class="type-btn active" id="studentBtn" onclick="toggleLoginType('student', this)">Student</button>
+            <button class="type-btn" id="adminBtn" onclick="toggleLoginType('admin', this)">Admin</button>
+        </div>
+
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <label id="idLabel">Student ID</label>
+                <input type="text" id="userId" required>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+
+        <p id="errorMessage" class="error-message">Invalid credentials. Please try again.</p>
+
+        <div id="registerLink" class="register-link">
+            <p>Don't have an account? <a href="register.html">Register here</a></p>
+        </div>
+    </div>
+
+    <script>
+        let currentLoginType = 'student';
+
+        const credentials = {
+            admin: {
+                username: 'admin',
+                password: 'admin123'
+            },
+            student: {
+                username: 'student',
+                password: 'student123'
+            }
+        };
+
+        function toggleLoginType(type, button) {
+            currentLoginType = type;
+            const buttons = document.querySelectorAll('.type-btn');
+            const idLabel = document.getElementById('idLabel');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            idLabel.textContent = type === 'student' ? 'Student ID' : 'Admin Username';
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('userId').value = '';
+            document.getElementById('password').value = '';
+
+            document.getElementById('registerLink').style.display = 
+                type === 'student' ? 'block' : 'none';
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            
+            const userId = document.getElementById('userId').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+
+            const userCredentials = credentials[currentLoginType];
+            if (userId === userCredentials.username && password === userCredentials.password) {
+                window.location.href = currentLoginType === 'admin' ? 
+                    'admin-dashboard.html' : 'student-dashboard.html';
+            } else {
+                errorMessage.style.display = 'block';
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById('registerLink').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
