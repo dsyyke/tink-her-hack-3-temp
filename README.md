@@ -1,26 +1,26 @@
-# [Project Name] 🎯
+"ONE-EVENT" 🎯
 
 
 ## Basic Details
-### Team Name: [Name]
+### Team Name: SuperGirls
 
 
 ### Team Members
-- Member 1: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+- Member 1: Devika AD - SCMS SCHOOL OF ENGINEERING AND TECHNOLOGY
+- Member 2: Dhiya Baby E - SCMS SCHOOL OF ENGINEERING AND TECHNOLOGY
+- Member 3: Sruthy Babu- SCMS SCHOOL OF ENGINEERING AND TECHNOLOGY
 
 ### Hosted Project Link
 [mention your project hosted project link here]
 
 ### Project Description
-[2-3 lines about what your project does]
+ONE-EVENT is a web app that centralizes all campus events, allowing students to view and register for events from various student communities. Admins can manage events, while students easily stay updated and engaged with campus activities.
 
 ### The Problem statement
-[What ridiculous problem are you solving?]
+The problem is that campus events from different student communities are scattered across various platforms, and most students are unaware of these events, making it difficult for them to stay updated and register. 
 
 ### The Solution
-[How are you solving it? Keep it fun!]
+ONE -EVENT solves this by providing a centralized platform where all campus events can be viewed and registered for, ensuring better visibility and access, with admin functionality for easy event management.
 
 ## Technical Details
 ### Technologies/Components Used
