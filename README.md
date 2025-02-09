@@ -27,73 +27,30 @@ ONE -EVENT solves this by providing a centralized platform where all campus even
 For Software:
 - [Languages used]-HTML,PYTHON
 - [Frameworks used]-FLASK
-- [Libraries used]-
-- [Tools used]-
 
-For Hardware:
-- [List main components]-
-- [List specifications]-
-- [List tools required]-
 
-### Implementation
-For Software:
-# Installation
-[commands]
 
-# Run
-[commands]
+
 
 ### Project Documentation
 For Software:
 
 # Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
-
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
-
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
-
-# Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
-
-For Hardware:
-
-# Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
-
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
+https://drive.google.com/drive/folders/11lgJlUsqSkbN8uxneudvnvWObOI51Fvw?usp=drive_link
 
 # Build Photos
-![Team](Add photo of your team here)
+https://drive.google.com/file/d/1tm2CENVhgo6tW6A_Ei_RKjGxS242uKdx/view?usp=drive_link
 
-
-![Components](Add photo of your components here)
-*List out all components shown*
-
-![Build](Add photos of build process here)
-*Explain the build steps*
-
-![Final](Add photo of final product here)
-*Explain the final build*
 
 ### Project Demo
 # Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
-
-# Additional Demos
-[Add any extra demo materials/links]
+https://drive.google.com/drive/folders/1S2LJZ-fj7D4OiIBuSTaW0_wY6SwEPLFn?usp=drive_link
+The folder contains the video which is our output of the project.
 
 ## Team Contributions
-- [Devika AD]: [Specific contributions]
-- [Dhiya Baby E]: [Specific contributions]
-- [Sruthy Babu]: [Specific contributions]
+- [Devika AD]: [FRONTEND]
+- [Dhiya Baby E]: [DATABASE ,DOCUMENTATION]
+- [Sruthy Babu]: [BACKEND]
 
 ---
 Made with ❤️ at TinkerHub
