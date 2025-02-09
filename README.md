@@ -48,9 +48,9 @@ https://drive.google.com/drive/folders/1S2LJZ-fj7D4OiIBuSTaW0_wY6SwEPLFn?usp=dri
 The folder contains the video which is our output of the project.
 
 ## Team Contributions
-- [Devika AD]: [HTML PAGES]
+- [Devika AD]: [FRONTEND]
 - [Dhiya Baby E]: [DATABASE ,DOCUMENTATION]
-- [Sruthy Babu]: [.PY PAGES]
+- [Sruthy Babu]: [BACKEND]
 
 ---
 Made with ❤️ at TinkerHub
