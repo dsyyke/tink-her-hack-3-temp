@@ -38,6 +38,9 @@ For Software:
 # Screenshots (Add at least 3)
 https://drive.google.com/drive/folders/11lgJlUsqSkbN8uxneudvnvWObOI51Fvw?usp=drive_link
 
+# Diagrams
+https://drive.google.com/file/d/1768-bRLH_l7ck9PjaGDzzyE3raL3aSM_/view?usp=sharing
+
 # Build Photos
 https://drive.google.com/file/d/1tm2CENVhgo6tW6A_Ei_RKjGxS242uKdx/view?usp=drive_link
 
